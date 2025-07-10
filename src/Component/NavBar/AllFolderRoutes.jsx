@@ -1,8 +1,8 @@
-import React from 'react'
-import { BrowserRouter as Router, Route, Link, Routes, NavLink, useLocation} from "react-router-dom";
+import React from 'react';
+import { BrowserRouter as Router, Route, Link, Routes, NavLink, useLocation } from "react-router-dom";
 import Dashboard from '../../Component/Dashboard/Dashboard';
-import Services from '../../Component/Services/ServicesContextApi'
-import DoctorServices from '../Doctor Services/DoctorServices'
+import Services from '../../Component/Services/ServicesContextApi';
+import DoctorServices from '../Doctor Services/DoctorServices';
 import PatientBilling from '../Patient Billing/PatientBilling';
 import { PtnServicesContextApi } from '../Patient Services/PtnServicesContextApi';
 // import Main from '../Patient Services/me'
@@ -14,25 +14,26 @@ import { PtnServicesContextApi } from '../Patient Services/PtnServicesContextApi
 // import TradeBook from '../Trade book/TradeBook';
 // import About from '../AboutUs/About/About'
 import NavBar from './NavBar';
-
 export default function AllFolderRoutes() {
-    let location = useLocation();
-    const NotFound = () => (  <h1>404.. This page is not found! - {location.pathname}</h1>)
-  
-  return (
-    <>
+  console.log(window.globalCount++);
+  let location = useLocation();
+  const NotFound = () => {
+    console.log(window.globalCount++);
+    return <h1>404.. This page is not found! - {location.pathname}</h1>;
+  };
+  return <>
     {/* Navbar */}
-    <NavBar/>
+    <NavBar />
 
     {/* ROUTES */}
     <div className='\'>
 
         <Routes>
-            <Route  path='/' element={<Dashboard/>}/>
+            <Route path='/' element={<Dashboard />} />
             {/* <Route  path='/services' element={<Services/>}/> */}
-            <Route  path='/patient' element={<PtnServicesContextApi/>}/>
-            <Route  path='/doctorServices' element={<DoctorServices/>}/>
-            <Route  path='/patientBilling' element={<PatientBilling/>}/>
+            <Route path='/patient' element={<PtnServicesContextApi />} />
+            <Route path='/doctorServices' element={<DoctorServices />} />
+            <Route path='/patientBilling' element={<PatientBilling />} />
             
             {/* <Route path='/dear-investor' element={<DearInvestors/>}/> */}
             {/* <Route path='/trade-book' element={<TradeBook/>}/> */}
@@ -41,11 +42,10 @@ export default function AllFolderRoutes() {
             {/* <Route path='EMR' element={<EMR/>}>
                 <Route path='Complaints' element={<EMRComponents/>}/>
                 <Route path='EMRpage' element={<EMRpage/>}/>
-            </Route> */}
+             </Route> */}
             <Route path='*' component={NotFound} />
         </Routes>
     </div> 
       
-    </>
-  )
+    </>;
 }
